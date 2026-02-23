@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的演唱會時光機</title>
+    <title>我的演唱會紀錄</title>
     <style>
         :root {
-            --primary-color: #2d3436;
-            --accent-color: #6c5ce7;
-            --bg-color: #f9f9f9;
+            --bg-color: #f4f4f7;
+            --card-bg: #ffffff;
+            --text-main: #2d3436;
+            --text-sub: #636e72;
+            --accent: #6c5ce7;
         }
 
         body {
@@ -16,71 +18,85 @@
             background-color: var(--bg-color);
             margin: 0;
             padding: 40px 20px;
-            color: var(--primary-color);
+            color: var(--text-main);
         }
 
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
-        /* 卡片容器 */
         .concert-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 25px;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        /* 單張卡片樣式 */
+        /* 年份分隔線 */
+        .year-section {
+            grid-column: 1 / -1;
+            margin: 30px 0 10px 0;
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+        .year-section::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #dcdde1;
+            margin-left: 15px;
+        }
+
+        /* 卡片主體 */
         .card {
-            background: white;
-            border-radius: 15px;
+            background: var(--card-bg);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             text-decoration: none;
             color: inherit;
-            display: block;
+            transition: transform 0.3s ease;
         }
-
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
         }
 
-        /* 卡片上方的日期裝飾 */
-        .card-header {
-            background: var(--accent-color);
-            color: white;
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
+        /* 圖片固定大小並自動裁切 */
+        .card-image {
+            width: 100%;
+            height: 200px; /* 你可以根據喜好調整高度 */
+            object-fit: cover; /* 關鍵：自動裁切填充 */
+            display: block;
+            background-color: #eee; /* 圖片載入前的底色 */
         }
 
         .card-body {
-            padding: 20px;
+            padding: 15px;
         }
 
-        .card-body h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.25rem;
+        .card-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            margin: 0 0 8px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; /* 標題太長會變省略號 */
         }
 
         .card-info {
-            font-size: 0.9rem;
-            color: #636e72;
-            line-height: 1.6;
-        }
-
-        .tag {
-            display: inline-block;
-            background: #eee;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
         }
     </style>
 </head>
@@ -88,33 +104,31 @@
 
 <header>
     <h1>Concert Archive</h1>
-    <p>紀錄每一場感動的瞬間</p>
+    <p>Live Music Memories</p>
 </header>
 
 <div class="concert-grid">
+    
+    <div class="year-section">2026</div>
+
     <a href="concert-a.html" class="card">
-        <div class="card-header">2026.02.14</div>
+        <img src="images/poster-a.jpg" alt="五月天" class="card-image">
         <div class="card-body">
-            <h3>五月天 [ 回到那一天 ]</h3>
-            <div class="card-info">
-                <div>📍 高雄國家體育場</div>
-                <div>💺 搖滾 A 區 12 排</div>
-            </div>
-            <span class="tag">25週年巡迴</span>
+            <div class="card-date">2026.02.14</div>
+            <h3 class="card-title">五月天 [ 回到那一天 ]</h3>
+            <div class="card-info">📍 高雄國家體育場</div>
         </div>
     </a>
 
     <a href="concert-b.html" class="card">
-        <div class="card-header">2026.03.20</div>
+        <img src="images/poster-b.jpg" alt="告五人" class="card-image">
         <div class="card-body">
-            <h3>告五人 [ 宇宙超有趣 ]</h3>
-            <div class="card-info">
-                <div>📍 宜蘭運動公園</div>
-                <div>💺 看台 B 區 5 排</div>
-            </div>
-            <span class="tag">戶外場</span>
+            <div class="card-date">2026.03.20</div>
+            <h3 class="card-title">告五人 [ 宇宙超有趣 ]</h3>
+            <div class="card-info">📍 宜蘭運動公園</div>
         </div>
     </a>
+
 </div>
 
 </body>
