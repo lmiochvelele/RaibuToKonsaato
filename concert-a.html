@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A 演唱會 - 歌單紀錄</title>
+    <style>
+        :root {
+            --text-color: #ffffff;
+            --overlay-bg: rgba(0, 0, 0, 0.6); /* 遮罩深淺：0.6 越大大越暗 */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background-color: #000;
+        }
+
+        /* 背景圖片設定 */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 這裡替換成你的主視覺圖片路徑 */
+            background-image: url('https://images.unsplash.com/photo-1459749411177-042180ce673c?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        /* 讓背景變淡的遮罩 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay-bg);
+            z-index: 0;
+        }
+
+        /* 內容區塊 */
+        .content {
+            position: relative;
+            z-index: 1;
+            color: var(--text-color);
+            padding: 60px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            background: white;
+            color: black;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 40px;
+            letter-spacing: 2px;
+        }
+
+        .info {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        /* 歌單樣式 */
+        .setlist {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .setlist li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .song-index {
+            opacity: 0.5;
+            margin-right: 15px;
+            font-family: monospace;
+        }
+
+        .song-title {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-container"></div>
+    <div class="overlay"></div>
+
+    <div class="content">
+        <a href="index.html" class="back-link">← 返回首頁</a>
+        
+        <h1>五月天 [ 回到那一天 ]</h1>
+        <p class="info">2026.02.14 @ 高雄國家體育場</p>
+
+        <ul class="setlist">
+            <li><span class="song-index">01</span> <span class="song-title">OAOA</span></li>
+            <li><span class="song-index">02</span> <span class="song-title">孫悟空</span></li>
+            <li><span class="song-index">03</span> <span class="song-title">入陣曲</span></li>
+            <li><span class="song-index">04</span> <span class="song-title">乾杯</span></li>
+            <li><span class="song-index">05</span> <span class="song-title">倔強</span></li>
+            <li><span class="song-index">...</span> <span class="song-title">（以此類推）</span></li>
+        </ul>
+    </div>
+
+</body>
+</html>
