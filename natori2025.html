@@ -69,12 +69,19 @@
             color: black;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-top: 40px;
-            letter-spacing: 2px;
-        }
-
+h1 {
+    font-size: 2.5rem;
+    margin-top: 40px;
+    letter-spacing: 2px;
+    
+    /* --- 加入以下這三行 --- */
+    white-space: nowrap;       /* 強制文字不換行 */
+    overflow: hidden;          /* 隱藏超出範圍的文字 */
+    text-overflow: ellipsis;   /* 如果太長，末端顯示 ... */
+    
+    width: 100%;               /* 確保標題寬度基準 */
+    display: block;
+}
         .info {
             font-size: 1rem;
             opacity: 0.8;
