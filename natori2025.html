@@ -6,7 +6,7 @@
     <title>演唱會紀錄</title>
     <style>
         :root {
-            --text-color: #ffffff;
+            --text-color: #000000;
             /*--bg-dark: #000000;  底色黑，圖片變淡後會透出黑色 */
         }
 
@@ -34,7 +34,7 @@
             background-position: center;
             
             /* 控制變淡的程度：0.3 代表 30% 亮度，數字越小越暗/淡 */
-            opacity: 0.5; 
+            opacity: 0.4; 
             
             z-index: -1; /* 確保在文字後方 */
             filter: blur(2px); /* 稍微增加模糊感，讓文字更清楚，不想要可刪除 */
@@ -52,23 +52,34 @@
             text-align: center;
         }
 
-        .back-link {
+.back-link {
             text-decoration: none;
-            color: rgba(255,255,255,0.7);
-            font-size: 2rem;
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 10px 30px;
-            border-radius: 20px;
-            transition: 0.4s;
+            color: #000000;
+            font-size: 1rem;
+            font-weight: bold;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            padding: 10px 25px;
+            border-radius: 8px;
             display: inline-block;
             margin-bottom: 20px;
+            
+            /* 立體感陰影：水平 垂直 模糊 顏色 */
+            box-shadow: 0 4px 0 #cccccc, 0 8px 15px rgba(0,0,0,0.1);
+            transition: all 0.1s ease;
+            position: relative;
+            top: 0;
+        }
+
+        /* 按鈕按下去的動態效果 */
+        .back-link:active {
+            top: 4px; /* 往下沉 */
+            box-shadow: 0 0px 0 #cccccc, 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .back-link:hover {
-            background: white;
-            color: black;
+            background: #f9f9f9;
         }
-
         /* 3. 標題：改大、不換行、可捲動 */
         h1 {
             font-size: 3rem; /* 字體大幅放大 */
