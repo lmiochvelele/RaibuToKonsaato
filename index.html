@@ -15,10 +15,9 @@
             background-color: var(--bg-color);
             margin: 0;
             padding: 50px 20px;
-            /* 確保整體內容水平置中 */
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: center; /* 確保 body 內的元件水平置中 */
         }
 
         header {
@@ -26,55 +25,52 @@
             margin-bottom: 50px;
         }
 
+        /* 演唱會卡片容器 */
         .concert-grid {
-            display: grid;
-            /* 這裡使用 fit-content 讓容器寬度根據內容自動調整，進而實現置中 */
-            grid-template-columns: repeat(auto-fill, 220px); 
+            display: flex;
+            flex-wrap: wrap; /* 自動換行 */
+            justify-content: center; /* 關鍵：讓內容物絕對置中 */
             gap: 30px;
             width: 100%;
-            max-width: 1000px;
-            justify-content: center; /* 關鍵：網格內的卡片置中 */
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* 年份標題置中且寬度 100% */
+        /* 年份分隔線 */
         .year-section {
-            grid-column: 1 / -1;
+            width: 100%; /* 佔滿整排 */
             margin: 40px 0 20px 0;
             display: flex;
             align-items: center;
+            justify-content: center;
             font-size: 1.6rem;
             font-weight: bold;
             color: var(--year-color);
-            width: 100%;
-            justify-content: center; /* 讓文字在標題列內置中 */
+            flex-basis: 100%; /* 強制年份標題自成一排 */
         }
 
-        /* 文字左邊的線 */
-        .year-section::before {
+        .year-section::before, .year-section::after {
             content: "";
             flex: 1;
             height: 2px;
             background: #d1d4d8;
-            margin-right: 20px;
+            max-width: 200px; /* 限制線條長度，讓年份在中間更顯眼 */
         }
 
-        /* 文字右邊的線 */
-        .year-section::after {
-            content: "";
-            flex: 1;
-            height: 2px;
-            background: #d1d4d8;
-            margin-left: 20px;
-        }
+        .year-section::before { margin-right: 20px; }
+        .year-section::after { margin-left: 20px; }
 
+        /* 海報卡片 */
         .card {
             display: block;
+            width: 220px; /* 固定寬度 */
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             aspect-ratio: 3 / 4;
             background-color: #fff;
+            text-decoration: none;
         }
 
         .card:hover {
@@ -89,11 +85,10 @@
             display: block;
         }
 
-        /* 手機版適應：一排兩張並保持置中 */
+        /* 手機版微調 */
         @media (max-width: 550px) {
-            .concert-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
+            .card {
+                width: calc(50% - 20px); /* 手機上一排兩個 */
             }
             .year-section {
                 font-size: 1.2rem;
