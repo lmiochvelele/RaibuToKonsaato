@@ -7,7 +7,7 @@
     <style>
         :root {
             --text-color: #ffffff;
-            --bg-dark: #000000;  /*底色黑，圖片變淡後會透出黑色 */
+            /*--bg-dark: #000000;  底色黑，圖片變淡後會透出黑色 */
         }
 
         body, html {
@@ -34,7 +34,7 @@
             background-position: center;
             
             /* 控制變淡的程度：0.3 代表 30% 亮度，數字越小越暗/淡 */
-            opacity: 0.7; 
+            opacity: 0.5; 
             
             z-index: -1; /* 確保在文字後方 */
             filter: blur(2px); /* 稍微增加模糊感，讓文字更清楚，不想要可刪除 */
@@ -55,11 +55,11 @@
         .back-link {
             text-decoration: none;
             color: rgba(255,255,255,0.7);
-            font-size: 1rem;
+            font-size: 2rem;
             border: 1px solid rgba(255,255,255,0.3);
-            padding: 8px 20px;
-            border-radius: 30px;
-            transition: 0.3s;
+            padding: 10px 30px;
+            border-radius: 20px;
+            transition: 0.4s;
             display: inline-block;
             margin-bottom: 20px;
         }
