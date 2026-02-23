@@ -15,7 +15,7 @@
             background-color: var(--bg-color);
             margin: 0;
             padding: 50px 20px;
-            /* 讓內容整體置中 */
+            /* 確保整體內容水平置中 */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -26,18 +26,17 @@
             margin-bottom: 50px;
         }
 
-        /* 網格容器置中 */
         .concert-grid {
             display: grid;
-            /* 固定寬度或自適應，minmax 確保手機版也能看 */
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            /* 這裡使用 fit-content 讓容器寬度根據內容自動調整，進而實現置中 */
+            grid-template-columns: repeat(auto-fill, 220px); 
             gap: 30px;
             width: 100%;
             max-width: 1000px;
-            justify-content: center;
+            justify-content: center; /* 關鍵：網格內的卡片置中 */
         }
 
-        /* 年份分隔線 */
+        /* 年份標題置中且寬度 100% */
         .year-section {
             grid-column: 1 / -1;
             margin: 40px 0 20px 0;
@@ -47,7 +46,19 @@
             font-weight: bold;
             color: var(--year-color);
             width: 100%;
+            justify-content: center; /* 讓文字在標題列內置中 */
         }
+
+        /* 文字左邊的線 */
+        .year-section::before {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: #d1d4d8;
+            margin-right: 20px;
+        }
+
+        /* 文字右邊的線 */
         .year-section::after {
             content: "";
             flex: 1;
@@ -56,23 +67,21 @@
             margin-left: 20px;
         }
 
-        /* 純海報卡片樣式 */
         .card {
             display: block;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            aspect-ratio: 3 / 4; /* 設定統一的海報比例，例如 3:4 */
-            text-decoration: none;
+            aspect-ratio: 3 / 4;
+            background-color: #fff;
         }
 
         .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
-        /* 海報圖片填滿並裁切 */
         .card-image {
             width: 100%;
             height: 100%;
@@ -80,11 +89,14 @@
             display: block;
         }
 
-        /* 手機版微調：一排顯示兩個 */
-        @media (max-width: 480px) {
+        /* 手機版適應：一排兩張並保持置中 */
+        @media (max-width: 550px) {
             .concert-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
+            }
+            .year-section {
+                font-size: 1.2rem;
             }
         }
     </style>
