@@ -6,12 +6,12 @@
     <title>我的演唱會紀錄</title>
     <style>
         :root {
-            --bg-color: #f0f2f5;
-            --year-color: #2d3436;
+            --bg-color: #1a1a1a;
+            --year-color: #d4af37;
         }
 
         body {
-            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            font-family: "Georgia", serif;
             background-color: var(--bg-color);
             margin: 0;
             padding: 50px 20px;
@@ -43,7 +43,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 2rem;
             font-weight: bold;
             color: var(--year-color);
             flex-basis: 100%; /* 強制年份標題自成一排 */
@@ -54,8 +54,7 @@
             flex: 1;
             height: 2px;
             background: #d1d4d8;
-            max-width: 200px; /* 限制線條長度，讓年份在中間更顯眼 */
-        }
+                  }
 
         .year-section::before { margin-right: 20px; }
         .year-section::after { margin-left: 20px; }
