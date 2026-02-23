@@ -98,12 +98,25 @@
         }
         h1::-webkit-scrollbar { display: none; }
 
-        .info {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            margin-bottom: 50px;
-            letter-spacing: 2px;
-        }
+.info {
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* 設定行與行之間的間距 */
+}
+
+.location {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.sub-info {
+    font-size: 1rem;
+    color: #333; /* 顏色稍微淺一點點點，做出層次 */
+    font-weight: 500;
+}
 
         /* 4. 歌單樣式 */
         .setlist-container {
@@ -145,8 +158,12 @@
         
         <h1>natori ASIA TOUR 2025 in Taipei</h1>
         
-        <p class="info">2025.10.26 @Zepp New Taipei</p>
-
+<div class="info">
+    <div class="location">2025.10.26 @Zepp New Taipei</div>
+    <div class="sub-info">1樓站席1689號</div>
+    <div class="sub-info">票價：NT$2800</div>
+</div>
+        
         <div class="setlist-container">
             <ul class="setlist">
                 <li><span class="song-index">01</span> <span>歌曲名稱 A</span></li>
