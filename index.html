@@ -62,18 +62,18 @@
         /* 海報卡片 */
         .card {
             display: block;
-            width: 220px; /* 固定寬度 */
+            width: 300px; /* 固定寬度 */
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             aspect-ratio: 3 / 4;
             background-color: #fff;
             text-decoration: none;
         }
 
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-15px) scale(1.1);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
