@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>natori2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
             --text-color: #000000;
@@ -142,11 +143,19 @@
             font-size: 1.1rem;
         }
 
-        .song-index {
-            opacity: 0.5;
-            margin-right: 20px;
-            font-family: monospace;
-        }
+ .song-index {
+    /* 只在這裡套用可愛圓潤字型 */
+    font-family: 'Quicksand', sans-serif; 
+    font-weight: 700;
+    font-size: 1.2rem;
+    
+    /* 設定一個可愛的顏色（例如粉橘色），不想換色可以刪除下一行 */
+    color: #ff7675; 
+    
+    margin-right: 20px;
+    display: inline-block;
+    min-width: 30px; /* 確保數字對齊 */
+}
     </style>
 </head>
 <body>
