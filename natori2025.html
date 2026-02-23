@@ -156,6 +156,12 @@
     display: inline-block;
     min-width: 30px; /* 確保數字對齊 */
 }
+        /* 在序號後自動加一個點 */
+.song-index::after {
+    content: ".";
+    margin-left: 2px;
+    color: #ccc; /* 點點用淡灰色 */
+}
     </style>
 </head>
 <body>
