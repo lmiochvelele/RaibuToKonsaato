@@ -167,11 +167,15 @@
     font-family: 'Quicksand', sans-serif;
     font-size: 1.8rem;
     font-weight: 700;
-    text-align: center;      /* 文字置中 */
-    margin: 80px 0 40px 0;   /* 增加與歌單的距離 */
-    letter-spacing: 8px;     /* 字距拉開，更有氛圍 */
+    
+    /* 強制置中關鍵 */
+    text-align: center;      
+    display: block;          /* 確保它是區塊元素佔滿一行 */
+    width: 100%;             /* 寬度撐滿 */
+    margin: 80px auto 40px;  /* auto 會處理左右置中 */
+    
+    letter-spacing: 8px;     
     color: #000;
-    position: relative;
 }
 
 /* 標題下方的小裝飾線（選用） */
