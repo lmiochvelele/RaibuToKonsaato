@@ -184,17 +184,17 @@
 /* 在歌名後面自動加小符號 */
 .song-name::after {
     content: " \25B8"; /* 這是播放小箭頭的代碼 */
-    font-size: 0.8rem;
-    margin-left: 8px;
+    font-size: 1.3rem;
+    margin-left: 10px;
     opacity: 0;       /* 平時隱藏 */
     transition: 0.3s;
-    color: #ff7675;   /* 可以選一個醒目的顏色 */
+    color: #007bff;   /* 可以選一個醒目的顏色 */
 }
 
 /* 當滑鼠移到這一列時，符號出現、歌名稍微往右跳一下 */
 .song-link:hover .song-name {
-    padding-left: 5px;
-    color: #ff7675;
+    padding-left: 10px;
+    color: #007bff;
 }
 
 .song-link:hover .song-name::after {
