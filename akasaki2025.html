@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>akasaki2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text-color: #000000;
+            /*--bg-dark: #000000;  底色黑，圖片變淡後會透出黑色 */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: "Noto Sans JP", sans-serif;
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        /* 1. 背景圖片層 */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* --- 重要：請確保 images 資料夾與此 html 檔案在同一層 --- */
+            /* --- 請將下面的 poster-a.jpg 改成你真正的檔名 --- */
+            background-image: url('images/akasaki2025.jpg'); 
+            background-size: cover;
+            background-position: center;
+            
+            /* 控制變淡的程度：0.3 代表 30% 亮度，數字越小越暗/淡 */
+            opacity: 0.4; 
+            
+            z-index: -1; /* 確保在文字後方 */
+            filter: blur(2px); /* 稍微增加模糊感，讓文字更清楚，不想要可刪除 */
+        }
+
+        /* 2. 內容容器 */
+        .content {
+            position: relative;
+            z-index: 1;
+            color: var(--text-color);
+            padding: 40px 20px;
+            /* 解除框架感：寬度設為 95% 並置中 */
+            max-width: 95%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+.back-link {
+            text-decoration: none;
+            color: #000000;
+            font-size: 1rem;
+            font-weight: bold;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            padding: 10px 25px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 20px;
+            
+            /* 立體感陰影：水平 垂直 模糊 顏色 */
+            box-shadow: 0 4px 0 #cccccc, 0 8px 15px rgba(0,0,0,0.1);
+            transition: all 0.1s ease;
+            position: relative;
+            top: 0;
+        }
+
+        /* 按鈕按下去的動態效果 */
+        .back-link:active {
+            top: 4px; /* 往下沉 */
+            box-shadow: 0 0px 0 #cccccc, 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .back-link:hover {
+            background: #f9f9f9;
+        }
+        /* 3. 標題：改大、不換行、可捲動 */
+        h1 {
+            font-size: 3rem; /* 字體大幅放大 */
+            font-weight: 900;
+            margin: 30px 0;
+            letter-spacing: 5px;
+            
+            white-space: nowrap;       /* 絕對不換行 */
+            overflow-x: auto;          /* 超出時可水平滑動 */
+            text-overflow: clip;       /* 不顯示 ... */
+            
+            width: 100%;
+            display: block;
+            /* 隱藏捲動軸樣式 */
+            scrollbar-width: none; 
+        }
+        h1::-webkit-scrollbar { display: none; }
+
+.info {
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* 設定行與行之間的間距 */
+}
+
+.location {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.sub-info {
+    font-size: 1rem;
+    color: #333; /* 顏色稍微淺一點點點，做出層次 */
+    font-weight: 500;
+}
+
+        /* 4. 歌單樣式 */
+        .setlist-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1); /* 歌單加一層極淡的底色 */
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px); /* 毛玻璃效果 */
+        }
+
+        .setlist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .setlist li {
+            padding: 15px 0;
+            border-bottom: 5px solid rgba(255,255,255,0.1);
+            display: flex;
+            font-size: 1.2rem;
+        }
+
+ .song-index {
+    /* 只在這裡套用可愛圓潤字型 */
+    font-family: 'Quicksand', sans-serif; 
+    font-weight: 800;
+    font-size: 1.8rem;
+    
+    /* 設定一個可愛的顏色（例如粉橘色），不想換色可以刪除下一行 
+    color: #ff7675; */
+    
+    margin-right: 20px;
+    display: inline-block;
+    min-width: 30px; /* 確保數字對齊 */
+}
+        /* 移除連結預設樣式 */
+.song-link {
+    text-decoration: none; /* 移除底線 */
+    color: inherit;       /* 繼承原本的黑色 */
+    flex-grow: 1;         /* 讓點擊區域撐滿整行，比較好點 */
+    display: flex;
+    align-items: center;
+}
+
+/* 滑鼠移上去時的效果（選用） */
+.song-link:hover .song-name {
+    color: #ff7675;       /* 移上去變色，提示可以點擊 */
+    text-decoration: underline; /* 移上去才出現底線 */
+    transition: 0.2s;
+}
+/* 讓連結區塊有互動感 */
+.song-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    transition: 0.2s;
+}
+
+/* 在歌名後面自動加小符號 */
+.song-name::after {
+    content: " \25B8"; /* 這是播放小箭頭的代碼 */
+    font-size: 1.3rem;
+    margin-left: 10px;
+    opacity: 0;       /* 平時隱藏 */
+    transition: 0.3s;
+    color: #007bff;   /* 可以選一個醒目的顏色 */
+}
+
+/* 當滑鼠移到這一列時，符號出現、歌名稍微往右跳一下 */
+.song-link:hover .song-name {
+    padding-left: 10px;
+    color: #007bff;
+}
+
+.song-link:hover .song-name::after {
+    opacity: 1;      /* 移上去才出現播放符號 */
+}
+
+        
+        /* 在序號後自動加一個點 
+.song-index::after {
+    content: ".";
+    margin-left: 5px;
+    color: #000000; /* 點點用淡灰色 */*/
+}
+/* 1. 確保標題完全置中 */
+.section-title {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    
+    display: block !important;    /* 強制成為區塊元素 */
+    width: 100vw !important;      /* 寬度撐滿整個視窗 */
+    margin-left: calc(-50vw + 50%) !important; /* 強制修正位移，確保絕對置中 */
+    text-align: center !important; 
+    
+    margin-top: 80px !important;
+    margin-bottom: 40px !important;
+    letter-spacing: 8px;
+    color: #000;
+}
+/* 確保裝飾線也跟著置中 */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #000;
+    margin: 15px auto 0;    /* auto 讓線條在標題下水平置中 */
+    border-radius: 2px;
+}
+/* 2. 6張照片網格設定 */
+.photo-grid {
+    display: grid;
+    /* 在手機上一排1張，平板一排2張，電腦一排3張 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px;               /* 照片之間的間隔 */
+    max-width: 1000px;
+    margin: 0 auto 100px auto;
+    padding: 0 20px;
+}
+
+/* 2. 照片框架（保留原本的白色相框） */
+.photo-item {
+    background: #fff;
+    padding: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+    transition: transform 0.3s ease;
+    
+    /* 確保框架本身也是正方形 */
+    display: flex;
+    aspect-ratio: 1 / 1; 
+}
+
+/* 3. 內部照片（強制正方形且填滿） */
+.photo-item img {
+    width: 100%;
+    height: 100%;             /* 填滿框架高度 */
+    aspect-ratio: 1 / 1;      /* 再次確保照片比例 */
+    object-fit: cover;        /* 裁切圖片，不讓它變形 */
+    display: block;
+}
+/* 滑鼠移上去的浮起效果 */
+.photo-item:hover {
+    transform: translateY(-10px); /* 向上浮起 */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="background-container"></div>
+
+    <div class="content">
+        <a href="index.html" class="back-link">← 回首頁</a>
+        
+        <h1>AKASAKI - 1st ASIA TOUR 「KONNICHIWA」</h1>
+        
+<div class="info">
+    <div class="location">2025.10.26 @ Zepp New Taipei</div>
+    <div class="sub-info">1 樓站席 1689 號</div>
+    <div class="sub-info">票價：NT$2800</div>
+</div>
+        
+        <div class="setlist-container">
+            <ul class="setlist">
+                <li><span class="song-index">01</span><a href="https://www.youtube.com/watch?v=bjYG08Cdix4" target="_blank" class="song-link"> <span class="song-name">猿芝居</span></li></a>
+                <li><span class="song-index">02</span><a href="https://www.youtube.com/watch?v=1pI242Hsi5U" target="_blank" class="song-link"> <span class="song-name">金木犀</span></li></a>
+                <li><span class="song-index">03</span><a href="https://www.youtube.com/watch?v=Ph5xcTn_I1I" target="_blank" class="song-link"> <span class="song-name">食卓</span></li></a>
+                <li><span class="song-index">04</span><a href="https://www.youtube.com/watch?v=GQrppVgwz5o" target="_blank" class="song-link"> <span class="song-name">Cult.</span></li></a>
+                <li><span class="song-index">05</span><a href="https://www.youtube.com/watch?v=VDdLF1YubI0" target="_blank" class="song-link"> <span class="song-name">プロポーズ</span></li></a>
+                <li><span class="song-index">06</span><a href="https://www.youtube.com/watch?v=YBroyA8Dqog" target="_blank" class="song-link"> <span class="song-name">にわかには信じがたいものです</span></li></a>
+                <li><span class="song-index">07</span><a href="https://www.youtube.com/watch?v=mrV3lSBiGAs" target="_blank" class="song-link"> <span class="song-name">ラブソング</span></li></a>
+                <li><span class="song-index">08</span><a href="https://www.youtube.com/watch?v=ZFxbl9Fm3c0" target="_blank" class="song-link"> <span class="song-name">ターミナル</span></li></a>
+                <li><span class="song-index">09</span><a href="https://www.youtube.com/watch?v=d48uxNdIPHM" target="_blank" class="song-link"> <span class="song-name">糸電話</span></li></a>
+                <li><span class="song-index">10</span><a href="https://www.youtube.com/watch?v=l0vUtRwObp4" target="_blank" class="song-link"> <span class="song-name">Sleepwalk</span></li></a>
+                <li><span class="song-index">11</span><a href="https://www.youtube.com/watch?v=6ehlre47fsg" target="_blank" class="song-link"> <span class="song-name">DRESSING ROOM</span></li></a>
+                <li><span class="song-index">12</span><a href="https://www.youtube.com/watch?v=Ou-dGbXLZa8" target="_blank" class="song-link"> <span class="song-name">非常口　逃げてみた</span></li></a>
+                <li><span class="song-index">13</span><a href="https://www.youtube.com/watch?v=H08YWE4CIFQ" target="_blank" class="song-link"> <span class="song-name">Overdose</span></li></a>
+                <li><span class="song-index">14</span><a href="https://www.youtube.com/watch?v=r2BbUBSWBAM" target="_blank" class="song-link"> <span class="song-name">SPEED</span></li></a>
+                <li><span class="song-index">15</span><a href="https://www.youtube.com/watch?v=4Pls29qqg6Y" target="_blank" class="song-link"> <span class="song-name">フライデーナイト</span></li></a>
+                <li><span class="song-index">16</span><a href="https://www.youtube.com/watch?v=49tyOkJ0uLs" target="_blank" class="song-link"> <span class="song-name">IN_MY_HEAD</span></li></a>
+                <li><span class="song-index">17</span><a href="https://www.youtube.com/watch?v=nMoltkms4oU" target="_blank" class="song-link"> <span class="song-name">聖者たち</span></li></a>
+                <li><span class="song-index">18</span><a href="https://www.youtube.com/watch?v=d2IQpD8Wzo0" target="_blank" class="song-link"> <span class="song-name">エウレカ</span></li></a>
+                <li><span class="song-index">19</span><a href="https://www.youtube.com/watch?v=LFoyXEFaz2Q" target="_blank" class="song-link"> <span class="song-name">絶対零度</span></li></a>
+            </ul>
+        </div>
+    </div>
+</div> <h2 class="section-title"></h2>
+
+<div class="photo-grid">
+    <div class="photo-item"><img src="albums/akasaki2025/natori1.jpg" alt="akasaki1"></div>
+    <div class="photo-item"><img src="albums/akasaki2025/natori2.jpg" alt="akasaki2"></div>
+    <div class="photo-item"><img src="albums/akasaki2025/natori3.jpg" alt="akasaki3"></div>
+    <div class="photo-item"><img src="albums/akasaki2025/natori4.jpg" alt="akasaki4"></div>
+    <div class="photo-item"><img src="albums/akasaki2025/natori5.jpg" alt="akasaki5"></div>
+    <div class="photo-item"><img src="albums/akasaki2025/natori6.jpg" alt="akasaki6"></div>
+    <div class="photo-item"><img src="albums/akasaki2025/natori7.jpg" alt="akasaki7"></div>
+    <div class="photo-item"><img src="albums/akasaki2025/natori8.jpg" alt="akasaki8"></div>
+
+</div></div>
+</body>
+</html>
