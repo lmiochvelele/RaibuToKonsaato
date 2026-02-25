@@ -171,6 +171,37 @@
     text-decoration: underline; /* 移上去才出現底線 */
     transition: 0.2s;
 }
+/* 讓連結區塊有互動感 */
+.song-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    transition: 0.2s;
+}
+
+/* 在歌名後面自動加小符號 */
+.song-name::after {
+    content: " \25B8"; /* 這是播放小箭頭的代碼 */
+    font-size: 0.8rem;
+    margin-left: 8px;
+    opacity: 0;       /* 平時隱藏 */
+    transition: 0.3s;
+    color: #ff7675;   /* 可以選一個醒目的顏色 */
+}
+
+/* 當滑鼠移到這一列時，符號出現、歌名稍微往右跳一下 */
+.song-link:hover .song-name {
+    padding-left: 5px;
+    color: #ff7675;
+}
+
+.song-link:hover .song-name::after {
+    opacity: 1;      /* 移上去才出現播放符號 */
+}
+
+        
         /* 在序號後自動加一個點 
 .song-index::after {
     content: ".";
