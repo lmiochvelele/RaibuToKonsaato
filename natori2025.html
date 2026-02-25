@@ -167,12 +167,11 @@
     font-size: 1.8rem;
     font-weight: 700;
     
-    /* 核心對齊設定 */
-    display: block;          /* 確保它是區塊元素 */
-    width: 100%;             /* 寬度撐滿 */
-    text-align: center !important; /* 強制文字居中 */
+    /* 修正置中的關鍵：確保它是區塊元素並強制文字置中 */
+    display: block; 
+    text-align: center !important; 
+    margin: 80px auto 40px auto; 
     
-    margin: 80px auto 40px auto; /* 上下留白，左右自動 */
     letter-spacing: 8px;
     color: #000;
 }
@@ -199,13 +198,11 @@
 }
 
 /* 3. 照片框架樣式 */
-.photo-item {
-    background: #fff;
-    padding: 12px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08); /* 柔和陰影 */
-    border: 1px solid #eee;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+.photo-item img {
+    width: 100%;
+    aspect-ratio: 1 / 1;     /* 關鍵：強制設定寬高比為 1:1 正方形 */
+    object-fit: cover;       /* 確保照片填滿不變形 */
+    display: block;
 }
 
 /* 滑鼠移上去的浮起效果 */
