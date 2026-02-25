@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>haruno2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text-color: #000000;
+            /*--bg-dark: #000000;  底色黑，圖片變淡後會透出黑色 */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: "Noto Sans JP", sans-serif;
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        /* 1. 背景圖片層 */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* --- 重要：請確保 images 資料夾與此 html 檔案在同一層 --- */
+            /* --- 請將下面的 poster-a.jpg 改成你真正的檔名 --- */
+            background-image: url('images/natori2025.jpg'); 
+            background-size: cover;
+            background-position: center;
+            
+            /* 控制變淡的程度：0.3 代表 30% 亮度，數字越小越暗/淡 */
+            opacity: 0.4; 
+            
+            z-index: -1; /* 確保在文字後方 */
+            filter: blur(2px); /* 稍微增加模糊感，讓文字更清楚，不想要可刪除 */
+        }
+
+        /* 2. 內容容器 */
+        .content {
+            position: relative;
+            z-index: 1;
+            color: var(--text-color);
+            padding: 40px 20px;
+            /* 解除框架感：寬度設為 95% 並置中 */
+            max-width: 95%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+.back-link {
+            text-decoration: none;
+            color: #000000;
+            font-size: 1rem;
+            font-weight: bold;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            padding: 10px 25px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 20px;
+            
+            /* 立體感陰影：水平 垂直 模糊 顏色 */
+            box-shadow: 0 4px 0 #cccccc, 0 8px 15px rgba(0,0,0,0.1);
+            transition: all 0.1s ease;
+            position: relative;
+            top: 0;
+        }
+
+        /* 按鈕按下去的動態效果 */
+        .back-link:active {
+            top: 4px; /* 往下沉 */
+            box-shadow: 0 0px 0 #cccccc, 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .back-link:hover {
+            background: #f9f9f9;
+        }
+        /* 3. 標題：改大、不換行、可捲動 */
+        h1 {
+            font-size: 3rem; /* 字體大幅放大 */
+            font-weight: 900;
+            margin: 30px 0;
+            letter-spacing: 5px;
+            
+            white-space: nowrap;       /* 絕對不換行 */
+            overflow-x: auto;          /* 超出時可水平滑動 */
+            text-overflow: clip;       /* 不顯示 ... */
+            
+            width: 100%;
+            display: block;
+            /* 隱藏捲動軸樣式 */
+            scrollbar-width: none; 
+        }
+        h1::-webkit-scrollbar { display: none; }
+
+.info {
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* 設定行與行之間的間距 */
+}
+
+.location {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.sub-info {
+    font-size: 1rem;
+    color: #333; /* 顏色稍微淺一點點點，做出層次 */
+    font-weight: 500;
+}
+
+        /* 4. 歌單樣式 */
+        .setlist-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1); /* 歌單加一層極淡的底色 */
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px); /* 毛玻璃效果 */
+        }
+
+        .setlist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .setlist li {
+            padding: 15px 0;
+            border-bottom: 5px solid rgba(255,255,255,0.1);
+            display: flex;
+            font-size: 1.2rem;
+        }
+
+ .song-index {
+    /* 只在這裡套用可愛圓潤字型 */
+    font-family: 'Quicksand', sans-serif; 
+    font-weight: 800;
+    font-size: 1.4rem;
+    
+    /* 設定一個可愛的顏色（例如粉橘色），不想換色可以刪除下一行 
+    color: #ff7675; */
+    
+    margin-right: 20px;
+    display: inline-block;
+    min-width: 30px; /* 確保數字對齊 */
+}
+        /* 在序號後自動加一個點 
+.song-index::after {
+    content: ".";
+    margin-left: 5px;
+    color: #000000; /* 點點用淡灰色 */*/
+}
+/* 1. 確保標題完全置中 */
+.section-title {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    
+    display: block !important;    /* 強制成為區塊元素 */
+    width: 100vw !important;      /* 寬度撐滿整個視窗 */
+    margin-left: calc(-50vw + 50%) !important; /* 強制修正位移，確保絕對置中 */
+    text-align: center !important; 
+    
+    margin-top: 80px !important;
+    margin-bottom: 40px !important;
+    letter-spacing: 8px;
+    color: #000;
+}
+/* 確保裝飾線也跟著置中 */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #000;
+    margin: 15px auto 0;    /* auto 讓線條在標題下水平置中 */
+    border-radius: 2px;
+}
+/* 2. 6張照片網格設定 */
+.photo-grid {
+    display: grid;
+    /* 在手機上一排1張，平板一排2張，電腦一排3張 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px;               /* 照片之間的間隔 */
+    max-width: 1000px;
+    margin: 0 auto 100px auto;
+    padding: 0 20px;
+}
+
+/* 2. 照片框架（保留原本的白色相框） */
+.photo-item {
+    background: #fff;
+    padding: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+    transition: transform 0.3s ease;
+    
+    /* 確保框架本身也是正方形 */
+    display: flex;
+    aspect-ratio: 1 / 1; 
+}
+
+/* 3. 內部照片（強制正方形且填滿） */
+.photo-item img {
+    width: 100%;
+    height: 100%;             /* 填滿框架高度 */
+    aspect-ratio: 1 / 1;      /* 再次確保照片比例 */
+    object-fit: cover;        /* 裁切圖片，不讓它變形 */
+    display: block;
+}
+/* 滑鼠移上去的浮起效果 */
+.photo-item:hover {
+    transform: translateY(-10px); /* 向上浮起 */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="background-container"></div>
+
+    <div class="content">
+        <a href="index.html" class="back-link">← 回首頁</a>
+        
+        <h1>HARUNO-春野Billboard Live TAIPEI 2026</h1>
+        
+<div class="info">
+    <div class="location">2026.02.24 @ Billboard Live TAIPEI</div>
+    <div class="sub-info">悠閒席 CB 排 1 號</div>
+    <div class="sub-info">票價：NT$1600</div>
+</div>
+        
+        <div class="setlist-container">
+            <ul class="setlist">
+                <li><span class="song-index">01</span> <span>燃える夜</span></li>
+                <li><span class="song-index">02</span> <span>HIGHER</span></li>
+                <li><span class="song-index">03</span> <span>overtime</span></li>
+                <li><span class="song-index">04</span> <span>WØNDERLUST</span></li>
+                <li><span class="song-index">05</span> <span>Like A Seraph</span></li>
+                <li><span class="song-index">06</span> <span>Venus Flytrap</span></li>
+                <li><span class="song-index">07</span> <span>D(evil)</span></li>
+                <li><span class="song-index">08</span> <span>Limbo</span></li>
+                <li><span class="song-index">09</span> <span>Kidding Me</span></li>
+                <li><span class="song-index">10</span> <span>Fool</span></li>
+                <li><span class="song-index">11</span> <span>MIST</span></li>
+                <li><span class="song-index">12</span> <span>Love Affair</span></li>
+                <li><span class="song-index">13</span> <span>Soooo Many Problems</span></li>
+                <li><span class="song-index">14</span> <span>summer</span></li>
+                <li><span class="song-index">15</span> <span>KODAK</span></li>
+                <li><span class="song-index">16</span> <span>Toxic Luv</span></li>
+                <li><span class="song-index">17</span> <span>U.F.O</span></li>
+                <li><span class="song-index">18</span> <span>Angels</span></li>
+                <li><span class="song-index">19</span> <span>鬼ごっこ</span></li>
+                <li><span class="song-index">20</span> <span>深昏睡</span></li>
+            </ul>
+        </div>
+    </div>
+</div> <h2 class="section-title"></h2>
+
+<div class="photo-grid">
+    <div class="photo-item"><img src="albums/haruno2026/haruno1.jpg" alt="haruno1"></div>
+    <div class="photo-item"><img src="albums/haruno2026/haruno2.jpg" alt="haruno2"></div>
+    <div class="photo-item"><img src="albums/haruno2026/haruno3.jpg" alt="haruno3"></div>
+    <div class="photo-item"><img src="albums/haruno2026/haruno4.jpg" alt="haruno4"></div>
+    <div class="photo-item"><img src="albums/haruno2026/haruno5.jpg" alt="haruno5"></div>
+   
+</div></div>
+</body>
+</html>
