@@ -162,33 +162,31 @@
     margin-left: 5px;
     color: #000000; /* 點點用淡灰色 */*/
 }
-/* 1. 標題置中設定 */
 .section-title {
     font-family: 'Quicksand', sans-serif;
     font-size: 1.8rem;
     font-weight: 700;
     
-    /* 強制置中關鍵 */
-    text-align: center;      
-    display: block;          /* 確保它是區塊元素佔滿一行 */
+    /* 核心對齊設定 */
+    display: block;          /* 確保它是區塊元素 */
     width: 100%;             /* 寬度撐滿 */
-    margin: 80px auto 40px;  /* auto 會處理左右置中 */
+    text-align: center !important; /* 強制文字居中 */
     
-    letter-spacing: 8px;     
+    margin: 80px auto 40px auto; /* 上下留白，左右自動 */
+    letter-spacing: 8px;
     color: #000;
 }
 
-/* 標題下方的小裝飾線（選用） */
+/* 確保裝飾線也跟著置中 */
 .section-title::after {
     content: '';
     display: block;
     width: 40px;
     height: 3px;
     background: #000;
-    margin: 15px auto 0;    /* 裝飾線也置中 */
+    margin: 15px auto 0;    /* auto 讓線條在標題下水平置中 */
     border-radius: 2px;
 }
-
 /* 2. 6張照片網格設定 */
 .photo-grid {
     display: grid;
